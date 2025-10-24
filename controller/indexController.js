@@ -6,12 +6,13 @@ async function renderHomepage(req, res) {
 
 async function renderAllGenres(req, res) {
   const genres = await db.getAllGenres();
-  console.log(genres);
   res.render("genres", { genres });
 }
 
 async function renderAllBooks(req, res) {
-  res.render("books");
+  const books = await db.getAllBooks();
+
+  res.render("books", { books });
 }
 
 module.exports = { renderHomepage, renderAllGenres, renderAllBooks };

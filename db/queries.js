@@ -5,4 +5,17 @@ async function getAllGenres() {
   return rows;
 }
 
-module.exports = { getAllGenres };
+async function getAllBooks() {
+  const { rows } = await pool.query("SELECT * FROM book");
+  return rows;
+}
+
+async function getGenreBooks(id) {
+  const { rows } = await pool.query(
+    "SELECT book.id, book.title FROM book INNER JOIN genres ON book.bookGenre = genres.id WHERE genres.id = $1;",
+    [id]
+  );
+  return rows;
+}
+
+module.exports = { getAllGenres, getAllBooks, getGenreBooks };
