@@ -6,6 +6,8 @@
     <title>Books</title>
   </head>
   <body>
-    <h1>LIST ALL BOOKS</h1>
+    <% books.forEach((book) => { %>
+    <p><%= book.title %></p>
+    <% }) %>
   </body>
 </html>
