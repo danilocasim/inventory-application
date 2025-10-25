@@ -8,6 +8,9 @@
   <body>
     <% books.forEach((book) => { %>
     <p><%= book.title %></p>
+    <form action="/delete/<%= genreId %>/<%= book.id %>" method="POST">
+      <button method="DELETE" type="submit">DELETE</button>
+    </form>
     <% }) %>
   </body>
 </html>
