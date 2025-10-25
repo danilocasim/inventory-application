@@ -12,7 +12,7 @@ async function renderAllGenres(req, res) {
 async function renderAllBooks(req, res) {
   const books = await db.getAllBooks();
 
-  res.render("books", { books });
+  res.render("books", { books, genreId: "books" });
 }
 
 module.exports = { renderHomepage, renderAllGenres, renderAllBooks };
