@@ -18,4 +18,8 @@ async function getGenreBooks(id) {
   return rows;
 }
 
-module.exports = { getAllGenres, getAllBooks, getGenreBooks };
+async function deleteBook(id) {
+  await pool.query("DELETE FROM book WHERE id = $1;", [id]);
+}
+
+module.exports = { getAllGenres, getAllBooks, getGenreBooks, deleteBook };
