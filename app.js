@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const indexRouter = require("./routes/indexRoute");
 const genresRouter = require("./routes/genresRoute");
+const booksRouter = require("./routes/booksRoute");
 const assetsPath = path.join(__dirname, "public");
 
 app.set("views", path.join(__dirname, "views"));
@@ -15,6 +16,7 @@ const { PORT } = process.env;
 
 app.use("/", indexRouter);
 app.use("/genres", genresRouter);
+app.use("/delete", booksRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
