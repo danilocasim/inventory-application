@@ -8,6 +8,12 @@ async function deleteBook(req, res) {
   res.redirect(`/genres/${genreId}`);
 }
 
+async function renderUpdateForm(req, res) {
+  const { bookId } = req.params;
+  const book = await db.getBook(bookId);
+  res.render("updateBook", { book: book[0] });
+}
+
 async function renderAddBookForm(req, res) {
   res.render("addBook");
 }
