@@ -25,6 +25,17 @@ async function addBook(genreId, title) {
   ]);
 }
 
+async function updateBook(id, title, bookGenre) {
+  await pool.query(
+    "UPDATE book SET title = $1, bookGenre = $2 WHERE id = $3;",
+    [title, bookGenre, id]
+  );
+}
+
+async function updateGenre(id, genre) {
+  await pool.query("UPDATE genres SET genre = $1 WHERE id = $2;", [genre, id]);
+}
+
 async function deleteBook(id) {
   await pool.query("DELETE FROM book WHERE id = $1;", [id]);
 }
