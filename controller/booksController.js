@@ -14,7 +14,8 @@ async function renderUpdateForm(req, res) {
 }
 
 async function renderAddBookForm(req, res) {
-  res.render("addBook");
+  const genres = await db.getAllGenres();
+  res.render("addBook", { genres });
 }
 
 async function addBook(req, res) {
