@@ -1,18 +1,18 @@
 const pool = require("./pool");
 
 async function getAllGenres() {
-  const { rows } = await pool.query("SELECT * FROM genres");
+  const { rows } = await pool.query("SELECT * FROM genres ORDER BY id;");
   return rows;
 }
 
 async function getAllBooks() {
-  const { rows } = await pool.query("SELECT * FROM book");
+  const { rows } = await pool.query("SELECT * FROM book ORDER BY id");
   return rows;
 }
 
 async function getGenreBooks(id) {
   const { rows } = await pool.query(
-    "SELECT book.id, book.title FROM book INNER JOIN genres ON book.bookGenre = genres.id WHERE genres.id = $1;",
+    "SELECT book.id, book.title FROM book INNER JOIN genres ON book.bookGenre = genres.id WHERE genres.id = $1 ORDER BY book.id",
     [id]
   );
   return rows;
