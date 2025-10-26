@@ -1,8 +1,14 @@
 const { Router } = require("express");
-const { deleteBook } = require("../controller/booksController");
+const {
+  deleteBook,
+  renderAddBookForm,
+  addBook,
+} = require("../controller/booksController");
 
 const booksRouter = Router();
 
-booksRouter.post("/:genreId/:bookId", deleteBook);
+booksRouter.post("/delete/:genreId/:bookId", deleteBook);
+booksRouter.get("/newBook", renderAddBookForm);
+booksRouter.post("/newBook", addBook);
 
 module.exports = booksRouter;

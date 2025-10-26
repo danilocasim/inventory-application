@@ -16,7 +16,7 @@ const { PORT } = process.env;
 
 app.use("/", indexRouter);
 app.use("/genres", genresRouter);
-app.use("/delete", booksRouter);
+app.use("/", booksRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
