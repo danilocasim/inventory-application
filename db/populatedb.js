@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const { Client } = require("pg");
+require("dotenv").config();
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS genres (                                                  
@@ -21,20 +22,40 @@ VALUES
 ('Non Fiction'),
 ('Tech Books');
 
-INSERT INTO book (bookGenre, title)
+INSERT INTO book (bookgenre, title)
 VALUES
-(1,'Meditation'),
+(1, 'Meditation'),
 (1, 'Atomic Habits'),
+(1, 'The 7 Habits of Highly Effective People'),
+(1, 'Deep Work'),
+(1, 'The Power of Now'),
+(1, 'Can’t Hurt Me'),
+(1, 'The Subtle Art of Not Giving a F*ck'),
 (2, 'To Kill a Mockingbird'),
+(2, 'The Great Gatsby'),
+(2, '1984'),
+(2, 'The Catcher in the Rye'),
+(2, 'Pride and Prejudice'),
+(2, 'The Alchemist'),
+(3, 'Noli Me Tangere'),
+(3, 'El Filibusterismo'),
+(3, 'Sapiens: A Brief History of Humankind'),
+(3, 'Educated'),
+(3, 'Becoming'),
+(3, 'The Diary of a Young Girl'),
 (4, 'Pattern and Design for JavaScript and React'),
-(3, 'Noli Me Tangere');
+(4, 'Clean Code'),
+(4, 'The Pragmatic Programmer'),
+(4, 'Refactoring'),
+(4, 'You Don’t Know JS Yet'),
+(4, 'Design Patterns: Elements of Reusable Object-Oriented Software');
 `;
 
+const { DB_NAME, DB_HOST, USERNAME, DB_PASSWORD } = process.env;
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString:
-      "postgresql://danilo:06092005@localhost:5432/books_management",
+    connectionString: `postgresql://${USERNAME}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}`,
   });
   await client.connect();
   await client.query(SQL);
