@@ -8,6 +8,12 @@
   <body>
     <% genres.forEach((genre) => { %>
     <a href="genres/<%= genre.id %>"><%= genre.genre %></a>
+    <form action="/updateGenre/<%= genre.id %>" method="GET">
+      <button type="submit">UPDATE</button>
+    </form>
+    <form action="/delete/<%= genre.id %>" method="POST">
+      <button type="submit">DELETE</button>
+    </form>
     <% }) %>
   </body>
 </html>
