@@ -1,4 +1,3 @@
-const { render } = require("ejs");
 const db = require("../db/queries");
 
 async function deleteBook(req, res) {
@@ -24,4 +23,18 @@ async function addBook(req, res) {
   res.redirect("/");
 }
 
-module.exports = { deleteBook, renderAddBookForm, addBook };
+async function updateBook(req, res) {
+  const { bookId, currentGenre } = req.params;
+  const { genreId, title } = req.body;
+  await db.updateBook(bookId, title, genreId);
+  res.redirect(`/genres/${currentGenre}`);
+}
+
+module.exports = {
+  deleteBook,
+  renderAddBookForm,
+  addBook,
+  renderUpdateForm,
+  updateBook,
+  deleteBook,
+};
