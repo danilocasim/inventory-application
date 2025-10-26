@@ -13,10 +13,9 @@
       <label for="genreId">Select Genre</label>
       <select name="genreId" id="genreId" required>
         <option value="" disabled selected>Choose a Genre</option>
-        <option value="1">Self Help</option>
-        <option value="2">Fiction</option>
-        <option value="3">Non Fiction</option>
-        <option value="4">Tech Books</option>
+        <% genres.forEach((genre) => { %>
+        <option value="<%= genre.id %>"><%= genre.genre %></option>
+        <% }) %>
       </select>
       <button type="submit">Add Book</button>
     </form>
