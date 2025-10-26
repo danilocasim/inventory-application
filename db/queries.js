@@ -36,6 +36,10 @@ async function addBook(genreId, title) {
   ]);
 }
 
+async function addGenre(genre) {
+  await pool.query("INSERT INTO genres (genre) VALUES ($1)", [genre]);
+}
+
 async function updateBook(id, title, bookGenre) {
   await pool.query(
     "UPDATE book SET title = $1, bookGenre = $2 WHERE id = $3;",
@@ -67,4 +71,5 @@ module.exports = {
   deleteGenre,
   getGenre,
   updateGenre,
+  addGenre,
 };
