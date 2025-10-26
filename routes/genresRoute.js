@@ -6,10 +6,12 @@ const {
   updateGenre,
   renderAddGenreForm,
   addGenre,
+  renderDeleteConfirmationGenre,
 } = require("../controller/genresController");
 const genresRouter = Router();
 
 genresRouter.get("/genres/:genreId", getGenreBooks);
+genresRouter.get("/deleteGenre/:genreId", renderDeleteConfirmationGenre);
 genresRouter.post("/deleteGenre/:genreId", deleteGenre);
 
 genresRouter.get("/updateGenre/:genreId", renderUpdateGenreForm);

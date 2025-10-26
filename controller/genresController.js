@@ -1,6 +1,8 @@
+require("dotenv").config();
 const db = require("../db/queries");
 const { validationResult, matchedData } = require("express-validator");
 const genresValidator = require("../middlewares/genresValidator");
+const passwordValidator = require("../middlewares/passwordValidator");
 
 async function getGenreBooks(req, res) {
   const { genreId } = req.params;
@@ -17,10 +19,10 @@ async function renderUpdateGenreForm(req, res) {
   });
 }
 
-async function deleteGenre(req, res) {
+async function renderDeleteConfirmationGenre(req, res) {
   const { genreId } = req.params;
-  await db.deleteGenre(genreId);
-  res.redirect("/genres");
+  const genreDetails = await db.getGenre(genreId);
+  res.render("deleteConfirmationGenre", { genreDetails: genreDetails[0] });
 }
 
 async function renderAddGenreForm(req, res) {
@@ -56,10 +58,29 @@ const updateGenre = [
   },
 ];
 
+const deleteGenre = [
+  passwordValidator,
+  async (req, res) => {
+    const errors = validationResult(req);
+    const { genreId } = req.params;
+    const genreDetails = await db.getGenre(genreId);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("deleteConfirmationGenre", {
+        errors: errors.array(),
+        genreDetails: genreDetails[0],
+      });
+    }
+    await db.deleteGenre(genreId);
+    res.redirect("/genres");
+  },
+];
+
 module.exports = {
   getGenreBooks,
   deleteGenre,
   renderUpdateGenreForm,
+  renderDeleteConfirmationGenre,
   updateGenre,
   addGenre,
   renderAddGenreForm,
