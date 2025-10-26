@@ -62,4 +62,9 @@ module.exports = {
   getGenreBooks,
   deleteBook,
   addBook,
+  getBook,
+  updateBook,
+  deleteGenre,
+  getGenre,
+  updateGenre,
 };
