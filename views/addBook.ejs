@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book</title>
+  </head>
+  <body>
+    <form action="/newBook" method="POST">
+      <label for="title">Enter the book title:</label>
+      <input type="text" name="title" id="title" required />
+
+      <label for="genreId">Select Genre</label>
+      <select name="genreId" id="genreId" required>
+        <option value="" disabled selected>Choose a Genre</option>
+        <option value="1">Self Help</option>
+        <option value="2">Fiction</option>
+        <option value="3">Non Fiction</option>
+        <option value="4">Tech Books</option>
+      </select>
+      <button type="submit">Add Book</button>
+    </form>
+  </body>
+</html>
