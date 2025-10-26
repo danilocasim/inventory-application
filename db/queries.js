@@ -18,8 +18,21 @@ async function getGenreBooks(id) {
   return rows;
 }
 
+async function addBook(genreId, title) {
+  await pool.query("INSERT INTO book (bookGenre, title) VALUES ($1, $2)", [
+    genreId,
+    title,
+  ]);
+}
+
 async function deleteBook(id) {
   await pool.query("DELETE FROM book WHERE id = $1;", [id]);
 }
 
-module.exports = { getAllGenres, getAllBooks, getGenreBooks, deleteBook };
+module.exports = {
+  getAllGenres,
+  getAllBooks,
+  getGenreBooks,
+  deleteBook,
+  addBook,
+};
