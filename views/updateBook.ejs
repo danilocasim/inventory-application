@@ -10,6 +10,8 @@
       action="/updateBook/<%= book.bookgenre %>/<%= book.id %>"
       method="POST"
     >
+      <%- include("partials/errors.ejs") %>
+
       <label for="title">Enter the book title:</label>
       <input
         type="text"

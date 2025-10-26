@@ -6,6 +6,7 @@
     <title>Add Book</title>
   </head>
   <body>
+    <%- include("partials/errors.ejs") %>
     <form action="/newBook" method="POST">
       <label for="title">Enter the book title:</label>
       <input type="text" name="title" id="title" required />

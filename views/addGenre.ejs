@@ -7,6 +7,7 @@
   </head>
   <body>
     <form action="/newGenre" method="POST">
+      <%- include("partials/errors.ejs") %>
       <label for="genre">Enter the Genre:</label>
       <input type="text" name="genre" id="genre" required />
 
