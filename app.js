@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 const { PORT } = process.env;
 
 app.use("/", indexRouter);
-app.use("/genres", genresRouter);
+app.use("/", genresRouter);
 app.use("/", booksRouter);
 
 app.listen(PORT, (err) => {
