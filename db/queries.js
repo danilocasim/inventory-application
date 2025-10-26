@@ -18,6 +18,17 @@ async function getGenreBooks(id) {
   return rows;
 }
 
+async function getBook(id) {
+  const { rows } = await pool.query("SELECT * FROM book WHERE id = $1", [id]);
+
+  return rows;
+}
+
+async function getGenre(id) {
+  const { rows } = await pool.query("SELECT * FROM genres WHERE id = $1", [id]);
+  return rows;
+}
+
 async function addBook(genreId, title) {
   await pool.query("INSERT INTO book (bookGenre, title) VALUES ($1, $2)", [
     genreId,
