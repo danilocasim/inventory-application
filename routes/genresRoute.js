@@ -10,7 +10,7 @@ const {
 const genresRouter = Router();
 
 genresRouter.get("/genres/:genreId", getGenreBooks);
-genresRouter.post("/delete/:genreId", deleteGenre);
+genresRouter.post("/deleteGenre/:genreId", deleteGenre);
 
 genresRouter.get("/updateGenre/:genreId", renderUpdateGenreForm);
 genresRouter.post("/updateGenre/:genreId", updateGenre);
