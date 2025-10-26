@@ -1,4 +1,6 @@
 const db = require("../db/queries");
+const { validationResult, matchedData } = require("express-validator");
+const genresValidator = require("../middlewares/genresValidator");
 
 async function getGenreBooks(req, res) {
   const { genreId } = req.params;
@@ -15,14 +17,6 @@ async function renderUpdateGenreForm(req, res) {
   });
 }
 
-async function updateGenre(req, res) {
-  const { genreId } = req.params;
-  const { genre } = req.body;
-
-  await db.updateGenre(genreId, genre);
-  res.redirect("/genres");
-}
-
 async function deleteGenre(req, res) {
   const { genreId } = req.params;
   await db.deleteGenre(genreId);
@@ -33,11 +27,34 @@ async function renderAddGenreForm(req, res) {
   res.render("addGenre");
 }
 
-async function addGenre(req, res) {
-  const { genre } = req.body;
-  await db.addGenre(genre);
-  res.redirect("/genres");
-}
+const addGenre = [
+  genresValidator,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("addGenre", { errors: errors.array() });
+    }
+    const { genre } = matchedData(req);
+    await db.addGenre(genre);
+    res.redirect("/genres");
+  },
+];
+
+const updateGenre = [
+  genresValidator,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("addGenre", { errors: errors.array() });
+    }
+    const { genreId } = req.params;
+    const { genre } = matchedData(req);
+    await db.updateGenre(genreId, genre);
+    res.redirect("/genres");
+  },
+];
 
 module.exports = {
   getGenreBooks,
