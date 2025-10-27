@@ -31,12 +31,12 @@ async function renderAddGenreForm(req, res) {
 }
 
 const updateGenre = [
-  genresValidator,
+  genresValidator.concat(passwordValidator),
   async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).render("addGenre", { errors: errors.array() });
+      return res.status(400).render("updateGenre", { errors: errors.array() });
     }
     const { genreId } = req.body;
     const { genre } = matchedData(req);

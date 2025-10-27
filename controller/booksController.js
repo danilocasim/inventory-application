@@ -48,7 +48,7 @@ const updateBook = [
     if (!errors.isEmpty()) {
       return res
         .status(400)
-        .render("addBook", { errors: errors.array(), genres });
+        .render("updateBook", { errors: errors.array(), genres });
     }
     const { bookId, currentGenre } = req.params;
     const { genreId, title } = matchedData(req);
