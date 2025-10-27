@@ -26,9 +26,10 @@ const addBook = [
   bookValidator,
   async (req, res) => {
     const errors = validationResult(req);
-    const genres = await db.getAllGenres();
 
     if (!errors.isEmpty()) {
+      const genres = await db.getAllGenres();
+
       return res
         .status(400)
         .render("addBook", { errors: errors.array(), genres });
@@ -50,10 +51,11 @@ const updateBook = [
         .status(400)
         .render("updateBook", { errors: errors.array(), genres });
     }
-    const { bookId, currentGenre } = req.params;
+    const { bookId } = req.body;
     const { genreId, title } = matchedData(req);
     await db.updateBook(bookId, title, genreId);
-    res.redirect(`/genres/${currentGenre}`);
+
+    res.redirect(`/booksGenre?genreId=${genreId}`);
   },
 ];
 
