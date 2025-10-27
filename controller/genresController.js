@@ -34,11 +34,15 @@ const updateGenre = [
   genresValidator.concat(passwordValidator),
   async (req, res) => {
     const errors = validationResult(req);
+    const { genreId } = req.body;
 
     if (!errors.isEmpty()) {
-      return res.status(400).render("updateGenres", { errors: errors.array() });
+      const genreDetails = await db.getGenre(genreId);
+      return res.status(400).render("updateGenres", {
+        errors: errors.array(),
+        genreDetails: genreDetails[0],
+      });
     }
-    const { genreId } = req.body;
     const { genre } = matchedData(req);
     await db.updateGenre(genreId, genre);
     res.redirect("/genres");
