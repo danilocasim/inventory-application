@@ -4,6 +4,7 @@
 
 body {
   font-family: "Lilita One", sans-serif;
+  letter-spacing: 1px;
 }
 
 nav {
@@ -36,6 +37,10 @@ nav a {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+.container button {
+  border: 1px solid #161616;
+}
+
 .box {
   height: 150px;
   border: 4px solid #161616;
@@ -44,6 +49,12 @@ nav a {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+}
+
+.box .genre {
+  border: none;
+  outline: none;
+  background-color: white;
 }
 
 a:has(.box),
@@ -70,20 +81,41 @@ a:has(.box),
 }
 
 .addGenreContainer,
-.addBookContainer {
+.addBookContainer,
+.updateBookContainer,
+.updateGenreContainer,
+.deleteGenreContainer {
   display: grid;
   place-content: center;
 }
 
 .addGenreContainer form,
-.addBookContainer form {
+.addBookContainer form,
+.updateBookContainer form,
+.updateGenreContainer form,
+.deleteGenreContainer form {
   display: grid;
   gap: 1rem;
 }
 
 .addGenreContainer button,
-.addBookContainer button {
+.addBookContainer button,
+.updateBookContainer button,
+.updateGenreContainer button,
+.deleteGenreContainer button {
   border: none;
   background-color: #161616;
   color: white;
+}
+
+.deleteGenreContainer a {
+  text-decoration: none;
+  background-color: white;
+  color: #161616;
+  border: 1px solid #161616;
+}
+
+.error-msg {
+  list-style: none;
+  color: red;
 }
