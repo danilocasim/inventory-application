@@ -15,7 +15,7 @@
           >Are you sure to delete this genre(<%= genreDetails.genre %>)?:</label
         >
         <label for="password">Admin Password</label>
-        <input type="password" name="password" id="password" />
+        <input type="password" name="password" id="password" required />
         <a href="/genres">No</a>
         <button name="genreId" value="<%= genreDetails.id %>" type="submit">
           Delete
