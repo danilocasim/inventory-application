@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Genre</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form action="/newGenre" method="POST">
-      <%- include("partials/errors.ejs") %>
-      <label for="genre">Enter the Genre:</label>
-      <input type="text" name="genre" id="genre" required />
+    <%- include("nav") %>
 
-      <button type="submit">Add Genre</button>
-    </form>
+    <div class="container addGenreContainer">
+      <form action="/newGenre" method="POST">
+        <%- include("partials/errors.ejs") %>
+        <label for="genre">Enter the Genre:</label>
+        <input type="text" name="genre" id="genre" required />
+        <button type="submit">Add Genre</button>
+      </form>
+    </div>
   </body>
 </html>

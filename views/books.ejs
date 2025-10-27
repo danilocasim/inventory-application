@@ -4,16 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <% books.forEach((book) => { %>
-    <p><%= book.title %></p>
-    <form action="/updateBook/<%= genreId %>/<%= book.id %>" method="GET">
-      <button type="submit">UPDATE</button>
-    </form>
-    <form action="/deleteBook/<%= genreId %>/<%= book.id %>" method="POST">
-      <button type="submit">DELETE</button>
-    </form>
-    <% }) %>
+    <%- include("nav") %>
+    <div class="container booksContainer">
+      <% books.forEach((book) => { %>
+      <div class="box boxBooks">
+        <p><%= book.title %></p>
+        <div class="buttons">
+          <form action="/updateBook/<%= genreId %>/<%= book.id %>" method="GET">
+            <button type="submit">UPDATE</button>
+          </form>
+          <form action="/deleteBook/<%= genreId %>/<%= book.id %>" method="POST">
+            <button type="submit">DELETE</button>
+        </div>
+      </div>
+      </form>
+      <% }) %>
+    </div>
   </body>
 </html>

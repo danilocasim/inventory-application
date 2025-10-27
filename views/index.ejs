@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a href="/genres">genres</a>
-    <a href="/books">books</a>
+    <%- include("nav") %>
+    <div class="container">
+      <a href="/genres"><div class="box">genres</div></a>
+      <a href="/books"><div class="box">books</div></a>
+    </div>
   </body>
 </html>

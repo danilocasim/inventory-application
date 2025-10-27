@@ -4,21 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Book</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <%- include("partials/errors.ejs") %>
-    <form action="/newBook" method="POST">
-      <label for="title">Enter the book title:</label>
-      <input type="text" name="title" id="title" required />
-
-      <label for="genreId">Select Genre</label>
-      <select name="genreId" id="genreId" required>
-        <option value="" disabled selected>Choose a Genre</option>
-        <% genres.forEach((genre) => { %>
-        <option value="<%= genre.id %>"><%= genre.genre %></option>
-        <% }) %>
-      </select>
-      <button type="submit">Add Book</button>
-    </form>
+    <%- include("nav") %>
+    <div class="container addBookContainer">
+      <%- include("partials/errors.ejs") %>
+      <form action="/newBook" method="POST">
+        <label for="title">Enter the book title:</label>
+        <input type="text" name="title" id="title" required />
+        <label for="genreId">Select Genre</label>
+        <select name="genreId" id="genreId" required>
+          <option value="" disabled selected>Choose a Genre</option>
+          <% genres.forEach((genre) => { %>
+          <option value="<%= genre.id %>"><%= genre.genre %></option>
+          <% }) %>
+        </select>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
   </body>
 </html>
