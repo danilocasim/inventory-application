@@ -11,13 +11,21 @@
     <div class="container genreContainer">
       <% genres.forEach((genre) => { %>
       <div class="box boxGenre">
-        <a href="genres/<%= genre.id %>"><%= genre.genre %></a>
+        <form action="booksGenre" method="GET">
+          <button class="genre" name="genreId" value="<%= genre.id %>">
+            <%= genre.genre %>
+          </button>
+        </form>
         <div class="buttons">
-          <form action="/updateGenre/<%= genre.id %>" method="GET">
-            <button type="submit">UPDATE</button>
+          <form action="/updateGenre" method="GET">
+            <button name="genreId" value="<%= genre.id %>" type="submit">
+              UPDATE
+            </button>
           </form>
-          <form action="/deleteGenre/<%= genre.id %>" method="GET">
-            <button type="submit">DELETE</button>
+          <form action="/deleteGenre" method="GET">
+            <button name="genreId" value="<%= genre.id %>" type="submit">
+              DELETE
+            </button>
           </form>
         </div>
       </div>

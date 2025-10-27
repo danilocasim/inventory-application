@@ -4,22 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Genre</title>
-    <link rel="stylesheet" type="text/css" src="style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <%- include("nav") %>
 
-    <form action="/updateGenre/<%= genreId %>" method="POST">
-      <label for="genre">Update the genre:</label>
-      <input
-        type="text"
-        name="genre"
-        id="genre"
-        value="<%= genreDetails.genre %>"
-        required
-      />
-
-      <button type="submit">Update Genre</button>
-    </form>
+    <div class="container updateGenreContainer">
+      <form action="/updateGenre" method="POST">
+        <label for="genre">Update the genre:</label>
+        <input
+          type="text"
+          value="<%= genreDetails.genre %>"
+          name="genre"
+          id="genre"
+          required
+        />
+        <button name="genreId" value="<%= genreDetails.id %>" type="submit">
+          Update Genre
+        </button>
+      </form>
+    </div>
   </body>
 </html>

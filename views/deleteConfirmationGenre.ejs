@@ -8,16 +8,19 @@
   </head>
   <body>
     <%- include("nav") %>
-    <form action="/deleteGenre/<%= genreDetails.id %>" method="POST">
-      <%- include("partials/errors.ejs") %>
-      <label for="genre"
-        >Are you sure to delete this genre(<%= genreDetails.genre %>)?:</label
-      >
-
-      <label for="password">Admin Password</label>
-      <input type="password" name="password" id="password" />
-      <a href="/genres">No</a>
-      <button type="submit">Delete</button>
-    </form>
+    <div class="container deleteGenreContainer">
+      <form action="/deleteGenre" method="POST">
+        <%- include("partials/errors.ejs") %>
+        <label for="genre"
+          >Are you sure to delete this genre(<%= genreDetails.genre %>)?:</label
+        >
+        <label for="password">Admin Password</label>
+        <input type="password" name="password" id="password" />
+        <a href="/genres">No</a>
+        <button name="genreId" value="<%= genreDetails.id %>" type="submit">
+          Delete
+        </button>
+      </form>
+    </div>
   </body>
 </html>
