@@ -68,6 +68,18 @@ a:has(.box),
   gap: 1rem;
 }
 
+button,
+select,
+input,
+.deleteGenreContainer a {
+  display: grid;
+  place-content: center;
+  height: 40px;
+}
+label {
+  font-size: 1.5rem;
+}
+
 .buttons button:hover {
   background-color: #161616;
   color: white;
@@ -118,4 +130,18 @@ a:has(.box),
 .error-msg {
   list-style: none;
   color: red;
+}
+
+@media screen and (min-width: 600px) {
+  .container,
+  nav {
+    padding: 2rem 5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container,
+  nav {
+    padding: 2rem 20rem;
+  }
 }
