@@ -10,12 +10,12 @@ const {
 } = require("../controller/genresController");
 const genresRouter = Router();
 
-genresRouter.get("/genres/:genreId", getGenreBooks);
-genresRouter.get("/deleteGenre/:genreId", renderDeleteConfirmationGenre);
-genresRouter.post("/deleteGenre/:genreId", deleteGenre);
+genresRouter.get("/booksGenre", getGenreBooks);
+genresRouter.get("/deleteGenre", renderDeleteConfirmationGenre);
+genresRouter.post("/deleteGenre", deleteGenre);
 
-genresRouter.get("/updateGenre/:genreId", renderUpdateGenreForm);
-genresRouter.post("/updateGenre/:genreId", updateGenre);
+genresRouter.get("/updateGenre", renderUpdateGenreForm);
+genresRouter.post("/updateGenre", updateGenre);
 genresRouter.get("/newGenre", renderAddGenreForm);
 genresRouter.post("/newGenre", addGenre);
 module.exports = genresRouter;

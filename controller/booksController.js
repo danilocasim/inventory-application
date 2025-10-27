@@ -3,16 +3,18 @@ const bookValidator = require("../middlewares/booksValidator");
 const { validationResult, matchedData } = require("express-validator");
 
 async function deleteBook(req, res) {
-  const { bookId, genreId } = req.params;
+  const { genreId } = req.params;
+  const { bookId } = req.body;
   await db.deleteBook(bookId);
   if (genreId === "books") res.redirect(`/${genreId}`);
-  res.redirect(`/genres/${genreId}`);
+  res.redirect(`/booksGenre?genreId=${genreId}`);
 }
 
 async function renderUpdateForm(req, res) {
-  const { bookId } = req.params;
+  const { bookId } = req.query;
+  const genres = await db.getAllGenres();
   const book = await db.getBook(bookId);
-  res.render("updateBook", { book: book[0] });
+  res.render("updateBook", { book: book[0], genres });
 }
 
 async function renderAddBookForm(req, res) {

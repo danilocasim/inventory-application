@@ -8,10 +8,10 @@ const {
 } = require("../controller/booksController");
 
 const booksRouter = Router();
-booksRouter.post("/deleteBook/:genreId/:bookId", deleteBook);
+booksRouter.post("/deleteBook/:genreId", deleteBook);
 booksRouter.post("/newBook", addBook);
 booksRouter.get("/newBook", renderAddBookForm);
-booksRouter.get("/updateBook/:genreId/:bookId", renderUpdateForm);
+booksRouter.get("/updateBook", renderUpdateForm); // css not working becuase of another param
 booksRouter.post("/updateBook/:currentGenre/:bookId", updateBook);
 
 module.exports = booksRouter;
