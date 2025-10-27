@@ -11,7 +11,7 @@
     <%- include("nav") %>
 
     <div class="container updateBookContainer">
-      <form action="/updateBook/>" method="POST">
+      <form action="/updateBook" method="POST">
         <%- include("partials/errors.ejs") %>
         <label for="title">Enter the book title:</label>
         <input
@@ -29,7 +29,7 @@
           <% }) %>
         </select>
       
-        <button type="submit">Update Book</button>
+        <button name="bookId" value="<%= book.id %>" type="submit">Update Book</button>
       </form>
     </div>
   </body>
