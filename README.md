@@ -24,3 +24,10 @@ An application that stores my to-be-read books, it's built using PostgreSQL, Exp
 - Backend: Node.js, Express
 - Frontend: EJS Templates, HTML, CSS
 - Database: PostgreSQL
+
+## Initial Design
+<img width="5553" height="2149" alt="image" src="https://github.com/user-attachments/assets/118678aa-6341-462e-a810-21fd920cbae8" />
+
+## Flow of the routes and controller
+<img width="2529" height="757" alt="image" src="https://github.com/user-attachments/assets/14aa92cd-3d3f-428c-87b2-83b9992b266a" />
+
